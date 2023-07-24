@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('admin/comics', [AdminComicController::class, 'index'])->name('admin.comics.index');
-Route::get('admin/pokemons/{id}', [AdminComicController::class, 'show'])->name('admin.comics.show');
+Route::get('admin/comics/{id}', [AdminComicController::class, 'show'])->name('admin.comics.show');
