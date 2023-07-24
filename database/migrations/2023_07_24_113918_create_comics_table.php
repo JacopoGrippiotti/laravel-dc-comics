@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title',90);
             $table->text('description');
-            $table->string('thumb',200);
-            $table->float('price',7,2);
-            $table->string('series',180);
+            $table->text('thumb');
+            $table->string('price');
+            $table->text('series');
             $table->date('sale_date');
             $table->string('type',120);
             $table->json('artists');    
