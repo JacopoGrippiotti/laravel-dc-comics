@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Pokemons Index')
+@section('title', 'Admin Comics Index')
 
 @section('main-content')
 <div class="container">
@@ -25,7 +25,7 @@
                         <th scope="col">Type</th>
                         <th scope="col">artists</th>
                         <th scope="col">writers</th>
-                        <th>Actions</th>
+                        <th class="col-2 ">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,9 +59,14 @@
                                 {{ $comic->writers[0] }}
                             </td>
                             <td>
-                                
+                               
+                                <a class="btn btn-sm btn-primary me-2"
+                                    href="{{ route('admin.comics.show', $comic->id) }}">
+                                    View
+                                </a>
                                 <a class="btn btn-sm btn-success me-2">Edit</a>
                                 <a class="btn btn-sm btn-warning me-2">Delete</a>
+                               
                             </td>
 
                         </tr>
