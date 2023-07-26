@@ -12,6 +12,19 @@
         </div>
     </div>
     <div class="row">
+        @if (session('deleted'))
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    {{ session('delete') }} has been deleted succesfully
+                </div>
+            </div>
+        @elseif ( session('created'))
+            <div class="col-12">
+                <div class="alert alert-primary">
+                    {{ session('created') }} has been created succesfully
+                </div>
+            </div>
+        @endif
         <div class="col-12">
             <table class="table table-striped table-hover text-center table-bordered">
                 <thead>
@@ -64,8 +77,17 @@
                                     href="{{ route('admin.comics.show', $comic->id) }}">
                                     View
                                 </a>
-                                <a class="btn btn-sm btn-success me-2">Edit</a>
-                                <a class="btn btn-sm btn-warning me-2">Delete</a>
+                                <a class="btn btn-sm btn-success me-2" 
+                                     href="{{ route('admin.comics.edit', $comic->id) }}">Edit
+                                </a>
+                                <form action="{{ route('admin.comics.destroy', $comic->id) }}" class="d-inline form-deleter" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-warning me-2">
+                                        Delete
+                                    </button>
+                                </form>
                                
                             </td>
 
@@ -80,6 +102,18 @@
 
 </div>
 
-
-
+@endsection
+@section('custom-script-tail')
+    <script>
+        const deleteFormElements = document.querySelectorAll('form.form-deleter');
+        deleteFormElements.forEach(formElement => {
+            formElement.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const userConfirm = window.confirm('Are you sure you want to delete this comic?');
+                if (userConfirm){
+                    this.submit();
+                }
+            });
+        });
+    </script>
 @endsection
