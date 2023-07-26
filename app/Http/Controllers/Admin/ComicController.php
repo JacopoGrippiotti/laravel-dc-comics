@@ -52,7 +52,7 @@ class ComicController extends Controller
 
         $newComic->save();
 
-        return redirect()->route('admin.comics.show', $newComic->id);
+        return redirect()->route('admin.comics.index')->with('created', $newComic->name);
 
     }
 
@@ -78,7 +78,7 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        $comic = Comic::findorfail($id);
+        $comic = Comic::findOrFail($id);
         return view('admin.comics.edit',compact('comic'));
     }
 
