@@ -11,6 +11,7 @@
    </main>
 
    @vite('resources/js/app.js')
+   @yield('custom-script-tail')
  </body>
 
 </html>
