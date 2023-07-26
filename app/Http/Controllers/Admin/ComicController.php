@@ -106,7 +106,7 @@ class ComicController extends Controller
 
         $comic->save();
 
-        return redirect()->route('admin.comics.show', $comic->id)->with('updated', $pokemon->name);
+        return redirect()->route('admin.comics.show', $comic->id)->with('updated', $comic->title);
     }
 
     /**
@@ -117,6 +117,8 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic= Comic::findorfail($id);
+        $comic->delete();
+        return redirect()->route('admin.comics.index', $comic->id)->with('deleted', $comic->title);
     }
 }
