@@ -7,11 +7,11 @@
     <div class="row justify-content-around">
         <div class="col-8">
             <h1>
-                update a comic
+                update comic: {{$comic->title}}
             </h1>
         </div>
 
-        <form class="col-8" action="{{ route('admin.comics.update') }}" method="POST">
+        <form class="col-8" action="{{ route('admin.comics.update'),$comic->id }}" method="POST">
             @csrf
             @method('PUT')
 
