@@ -7,11 +7,11 @@
     <div class="row justify-content-around">
         <div class="col-8">
             <h1>
-                update comic: {{$comic->title}}
+                Update comic: {{$comic->title}}
             </h1>
         </div>
 
-        <form class="col-8" action="{{ route('admin.comics.update'),$comic->id }}" method="POST">
+        <form class="col-8" action="{{ route('admin.comics.update',$comic->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -61,18 +61,18 @@
                 <label for="artists" class="form-label">
                     Artists
                 </label>
-                <input type="text" class="form-control" id="artists" name="artists" value="{{$comic->artists}}">
+                <input type="text" class="form-control" id="artists" name="artists" value="{{$comic->artists[0]}}">
             </div>
             <div class="mb-3">
                 <label for="writers" class="form-label">
                     Writers
                 </label>
-                <input type="text" class="form-control" id="writers" name="writers" value="{{$comic->writers}}">
+                <input type="text" class="form-control" id="writers" name="writers" value="{{$comic->writers[0]}}">
             </div>
 
 
             <button type="submit" class="btn btn-primary">
-                Create new Comic
+                Update Comic
             </button>
             <button type="reset" class="btn btn-warning">
                 Reset fields
